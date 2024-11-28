@@ -1,1 +1,1 @@
-# Trabalho-de-Integra-o-JAVA-com-Banco-de-Dados
+# Trabalho de Integração JAVA com Banco de Dados
