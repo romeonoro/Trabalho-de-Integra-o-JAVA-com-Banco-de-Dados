@@ -20,8 +20,19 @@ UPDATE itens
 SET estado = 'Disponível'
 WHERE id = 1;
 
+--Testando as Procedures
+-- 1. Emprestar um Item
+CALL EmprestarItem(1, 1, 1);
+
+-- 2. Devolver um Item
+CALL DevolverItem(1);
+
+-- Verificar os resultados
 SELECT * FROM log_acao
 SELECT * FROM usuarios
 SELECT * FROM itens
 SELECT * FROM salas
 SELECT * FROM predios
+
+
+
