@@ -85,58 +85,51 @@ END$$
 
 DELIMITER ;
 
--- Procedure para Emprestar Item
+-- Trigger para impedir a inserção de matrículas duplicadas
 DELIMITER $$
 
-CREATE PROCEDURE EmprestarItem (
-    IN p_item_id INT,
-    IN p_usuario_id INT,
-    IN p_sala_id INT
-)
+CREATE TRIGGER trg_impedir_matricula_duplicada
+BEFORE INSERT ON usuarios
+FOR EACH ROW
 BEGIN
-    DECLARE item_estado VARCHAR(10);
-
-    -- Verifica o estado atual do item
-    SELECT estado INTO item_estado FROM itens WHERE id = p_item_id;
-
-    -- Verifica se o item está disponível
-    IF item_estado = 'disponivel' THEN
-        -- Atualiza o estado do item para 'emprestado'
-        UPDATE itens 
-        SET estado = 'emprestado',
-            id_usuario = p_usuario_id,
-            id_sala = p_sala_id
-        WHERE id = p_item_id;
-    ELSE
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Item não está disponível para empréstimo.';
+    -- Verifica se a matrícula já existe na tabela de usuários
+    IF EXISTS (SELECT 1 FROM usuarios WHERE matricula = NEW.matricula) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro: Matrícula já cadastrada!';
     END IF;
 END$$
 
 DELIMITER ;
 
--- Procedure com Transaction para Devolução de Item
+-- Trigger para impedir a inserção de prédios com nomes duplicados
 DELIMITER $$
 
-CREATE PROCEDURE DevolverItem (
-    IN p_item_id INT
-)
+CREATE TRIGGER trg_impedir_predio_duplicado
+BEFORE INSERT ON predios
+FOR EACH ROW
 BEGIN
-    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro ao processar a devolução.';
-    END;
-
-    START TRANSACTION;
-
-    -- Atualiza o estado do item para 'disponivel'
-    UPDATE itens 
-    SET estado = 'disponivel',
-        id_usuario = NULL,
-        id_sala = NULL
-    WHERE id = p_item_id;
-
-    COMMIT;
+    -- Verifica se o nome do prédio já existe na tabela de prédios
+    IF EXISTS (SELECT 1 FROM predios WHERE nome = NEW.nome) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro: Prédio com esse nome já cadastrado!';
+    END IF;
 END$$
 
 DELIMITER ;
+
+-- View para visualizar os itens emprestados com informações
+CREATE VIEW vw_itens_emprestados AS
+    SELECT 
+        i.id AS item_id,
+        i.nome AS item_nome,
+        i.categoria,
+        i.estado,
+        u.nome AS usuario_nome,
+        u.matricula,
+        s.nome AS sala_nome,
+        p.nome AS predio_nome
+    FROM itens i
+    JOIN usuarios u ON i.id_usuario = u.id
+    JOIN salas s ON i.id_sala = s.id
+    JOIN predios p ON s.id_predio = p.id
+    WHERE i.estado = 'emprestado';
+-- Utilizar a view
+SELECT * FROM vw_itens_emprestados;
