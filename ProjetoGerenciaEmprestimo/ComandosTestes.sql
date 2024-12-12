@@ -1,22 +1,35 @@
 USE GerenciamentoEmprestimo
 
-INSERT INTO usuarios (nome, matricula, contato) 
-VALUES ('João', '222222222', '559999999');
+-- Inserir usuários
+INSERT INTO usuarios (nome, matricula, contato) VALUES 
+('Bruno Difante', '12345678', '1111-1111'),
+(`'Matheus Nogueira', '23456789', '2222-2222');
 
--- Inserir prédio
-INSERT INTO predios (nome) 
-VALUES ('3');
+-- Inserir prédios
+INSERT INTO predios (nome) VALUES 
+('1'), 
+('3');
 
--- Inserir sala
-INSERT INTO salas (nome, id_predio) 
-VALUES ('303', 1);
+-- Inserir salas
+INSERT INTO salas (nome, id_predio) VALUES 
+('101', 1), 
+('102', 1), 
+('201', 2);
 
--- Inserir item
-INSERT INTO itens (nome, categoria, estado, id_sala, id_usuario) 
-VALUES ('Chave Salão Azul', 'Chaves', 'Disponivel', 1, 1);
+-- Inserir itens
+INSERT INTO itens (nome, categoria, estado) VALUES 
+('Livro de Redes', 'Livro', 'disponivel'),
+('Projetor Epson', 'Equipamento', 'disponivel');
 
-UPDATE itens
-SET estado = 'Emprestado'
-WHERE id = 11;
+-- Emprestar um Item
+CALL EmprestarItem(1, 1, 1);
 
-SELECT * FROM log_acao
+-- Devolver um Item
+CALL DevolverItem(1);
+
+-- Verificar os Itens
+SELECT * FROM itens;
+
+-- Verificar o Log de Ações
+SELECT * FROM log_acao;
+
