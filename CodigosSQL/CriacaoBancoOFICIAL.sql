@@ -48,7 +48,9 @@ CREATE TABLE log_acao (
     data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Trigger para Log de Alteração no Estado dos Itens
+
+
+-- Trigger para Log de Alteração no Estado dos Itens -- TRIGGER 1 OBRIGATÓRIO
 DELIMITER $$
 
 CREATE TRIGGER trg_log_estado_update
@@ -85,7 +87,9 @@ END$$
 
 DELIMITER ;
 
--- Trigger para impedir a inserção de matrículas duplicadas
+
+
+-- Trigger para impedir a inserção de matrículas duplicadas -- TRIGGER 2 OBRIGATÓRIO
 DELIMITER $$
 
 CREATE TRIGGER trg_impedir_matricula_duplicada
@@ -100,7 +104,8 @@ END$$
 
 DELIMITER ;
 
--- Trigger para impedir a inserção de prédios com nomes duplicados
+
+-- Trigger para impedir a inserção de prédios com nomes duplicados -- TRIGGER 3 OBRIGATÓRIO
 DELIMITER $$
 
 CREATE TRIGGER trg_impedir_predio_duplicado
@@ -115,9 +120,10 @@ END$$
 
 DELIMITER ;
 
+
+
 -- VIEWS
--- VIEW UTILIZADA PARA O RELATÓRIO DE ITENS ATRASADOS
--- Devoluções Atrasadas
+-- VIEW UTILIZADA PARA O RELATÓRIO DE ITENS ATRASADOS -- VIEW 1 OBRIGARÓRIA
 CREATE VIEW vw_itens_devolucoes_atrasadas AS
 SELECT 
     la.item AS item_nome,
@@ -140,7 +146,7 @@ ORDER BY dias_em_atraso DESC;
 SELECT * FROM vw_itens_devolucoes_atrasadas;
 
 
--- View para visualizar os itens emprestados com informações
+-- View para visualizar os itens emprestados com informações -- VIEW 2 NÃO OBRIGATÓRIA
 CREATE VIEW vw_itens_emprestados AS
     SELECT 
         i.id AS item_id,
