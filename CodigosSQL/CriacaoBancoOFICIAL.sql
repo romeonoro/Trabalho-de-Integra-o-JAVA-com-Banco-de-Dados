@@ -133,3 +133,25 @@ CREATE VIEW vw_itens_emprestados AS
     WHERE i.estado = 'emprestado';
 -- Utilizar a view
 SELECT * FROM vw_itens_emprestados;
+
+-- Devoluções Atrasadas
+CREATE VIEW vw_itens_devolucoes_atrasadas AS
+SELECT 
+    la.item AS item_nome,
+    la.dono AS usuario_nome,
+    la.data_hora AS data_emprestimo,
+    la.sala AS sala,
+    la.predio AS predio,
+    TIMESTAMPDIFF(DAY, la.data_hora, NOW()) AS dias_em_atraso
+FROM log_acao la
+JOIN (
+    -- Subconsulta para pegar o registro mais recente de cada item
+    SELECT item, MAX(data_hora) AS ultima_acao
+    FROM log_acao
+    GROUP BY item
+) recentes ON la.item = recentes.item AND la.data_hora = recentes.ultima_acao
+WHERE la.acao LIKE 'Alteração de Estado: atrasado'
+ORDER BY dias_em_atraso DESC;
+
+
+SELECT * FROM vw_itens_devolucoes_atrasadas;
