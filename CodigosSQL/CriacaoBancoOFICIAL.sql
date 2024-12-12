@@ -13,13 +13,13 @@ CREATE TABLE usuarios (
 -- Tabela de Predios
 CREATE TABLE predios (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(1) NOT NULL
+    nome VARCHAR(2) NOT NULL
 );
 
 -- Tabela de Salas
 CREATE TABLE salas (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(3) NOT NULL,
+    nome VARCHAR(5) NOT NULL,
     id_predio INT NOT NULL,
     FOREIGN KEY (id_predio) REFERENCES predios(id)
 );
