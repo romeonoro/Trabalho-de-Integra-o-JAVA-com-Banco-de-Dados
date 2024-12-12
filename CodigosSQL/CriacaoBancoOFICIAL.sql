@@ -115,25 +115,8 @@ END$$
 
 DELIMITER ;
 
--- View para visualizar os itens emprestados com informações
-CREATE VIEW vw_itens_emprestados AS
-    SELECT 
-        i.id AS item_id,
-        i.nome AS item_nome,
-        i.categoria,
-        i.estado,
-        u.nome AS usuario_nome,
-        u.matricula,
-        s.nome AS sala_nome,
-        p.nome AS predio_nome
-    FROM itens i
-    JOIN usuarios u ON i.id_usuario = u.id
-    JOIN salas s ON i.id_sala = s.id
-    JOIN predios p ON s.id_predio = p.id
-    WHERE i.estado = 'emprestado';
--- Utilizar a view
-SELECT * FROM vw_itens_emprestados;
-
+-- VIEWS
+-- VIEW UTILIZADA PARA O RELATÓRIO DE ITENS ATRASADOS
 -- Devoluções Atrasadas
 CREATE VIEW vw_itens_devolucoes_atrasadas AS
 SELECT 
@@ -155,3 +138,26 @@ ORDER BY dias_em_atraso DESC;
 
 
 SELECT * FROM vw_itens_devolucoes_atrasadas;
+
+
+-- View para visualizar os itens emprestados com informações
+CREATE VIEW vw_itens_emprestados AS
+    SELECT 
+        i.id AS item_id,
+        i.nome AS item_nome,
+        i.categoria,
+        i.estado,
+        u.nome AS usuario_nome,
+        u.matricula,
+        s.nome AS sala_nome,
+        p.nome AS predio_nome
+    FROM itens i
+    JOIN usuarios u ON i.id_usuario = u.id
+    JOIN salas s ON i.id_sala = s.id
+    JOIN predios p ON s.id_predio = p.id
+    WHERE i.estado = 'emprestado';
+-- Utilizar a view
+SELECT * FROM vw_itens_emprestados;
+
+
+
