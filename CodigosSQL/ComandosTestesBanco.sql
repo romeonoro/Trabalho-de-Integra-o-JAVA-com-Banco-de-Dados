@@ -20,7 +20,7 @@ UPDATE itens
 SET estado = 'Disponível'
 WHERE id = 1;
 
-SELECT * FROM log_acao3
+SELECT * FROM log_acao
 SELECT * FROM usuarios
 SELECT * FROM itens
 SELECT * FROM salas
