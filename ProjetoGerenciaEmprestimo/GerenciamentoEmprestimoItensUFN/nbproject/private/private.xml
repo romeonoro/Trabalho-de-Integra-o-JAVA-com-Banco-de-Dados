@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/DAO/PredioDAO.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/InterfaceCadastroSala.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/beans/Sala.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/DAO/UsuarioDAO.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/DAO/ItemDAO.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/beans/Usuario.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/Main.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/InterfaceCadastroPredio.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/beans/Predio.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/InterfaceCadastraUsuario.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/InterfaceAlteraEstadoItem.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/Conexao.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/beans/Item.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/conexao/InterfaceCadastroItem.java</file>
+            <file>file:/C:/Users/guede/OneDrive/Área%20de%20Trabalho/GerenciamentoEmprestimoItensUFN/src/DAO/SalaDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
