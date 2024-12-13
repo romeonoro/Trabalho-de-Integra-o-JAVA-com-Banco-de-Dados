@@ -1,4 +1,4 @@
-USE GerenciamentoEmprestimo
+USE GerenciamentoEmprestimo;
 
 INSERT INTO usuarios (nome, matricula, contato) 
 VALUES ('Vicenzo', '444444444', '559999999');
