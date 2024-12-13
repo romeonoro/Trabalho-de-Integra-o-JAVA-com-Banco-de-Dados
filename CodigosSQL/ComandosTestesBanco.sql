@@ -17,15 +17,8 @@ VALUES ('Chave Salão Branco', 'Chaves', 'Disponivel', 1, 1);
 
 -- Atualizar estado do item
 UPDATE itens
-SET estado = 'Disponível'
+SET estado = 'Emprestado'
 WHERE id = 1;
-
---Testando as Procedures
--- 1. Emprestar um Item
-CALL EmprestarItem(1, 1, 1);
-
--- 2. Devolver um Item
-CALL DevolverItem(1);
 
 -- Verificar os resultados
 SELECT * FROM log_acao
