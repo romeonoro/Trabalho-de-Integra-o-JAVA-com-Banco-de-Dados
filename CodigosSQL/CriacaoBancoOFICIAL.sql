@@ -146,7 +146,19 @@ ORDER BY dias_em_atraso DESC;
 SELECT * FROM vw_itens_devolucoes_atrasadas;
 
 
--- View para visualizar os itens emprestados com informações -- VIEW 2 NÃO OBRIGATÓRIA
+-- View para verificar disponibilidades -- VIEW 2 OBRIGATORIA
+
+CREATE VIEW vw_usuarios_itens_disponibilidade AS
+     SELECT
+         u.nome AS usuario_nome,
+         u.matricula AS usuario_matricula,
+         i.id AS item_id,
+         i.nome AS item_nome,
+         i.estado AS item_estado
+     FROM usuarios u
+     JOIN itens i ON i.id_usuario = u.id;
+
+-- View para visualizar os itens emprestados com informações -- VIEW 3 NÃO OBRIGATÓRIA
 CREATE VIEW vw_itens_emprestados AS
     SELECT 
         i.id AS item_id,
@@ -165,17 +177,7 @@ CREATE VIEW vw_itens_emprestados AS
 -- Utilizar a view
 SELECT * FROM vw_itens_emprestados;
 
--- View para verificar disponibilidades -- VIEW 3 OBRIGATORIA
 
-CREATE VIEW vw_usuarios_itens_disponibilidade AS
-     SELECT
-         u.nome AS usuario_nome,
-         u.matricula AS usuario_matricula,
-         i.id AS item_id,
-         i.nome AS item_nome,
-         i.estado AS item_estado
-     FROM usuarios u
-     JOIN itens i ON i.id_usuario = u.id;
 
 
 
